@@ -37,6 +37,12 @@
     - [x] controller
     - [x] model
     - [x] repository
+  - [ ] start automated tests
+    - [ ] unitary tests (common in TDD)
+    - [ ] integration tests (routes -> controller -> repository <> repository <- controller <- response)
+    - E2E, end2end tests
+    - `yarn add jest @types/jest -D`
+      - `yarn --init`
 
 
 <!-- links -->
