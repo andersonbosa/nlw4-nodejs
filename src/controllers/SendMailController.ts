@@ -5,6 +5,7 @@ import { SurveyRepository } from '../repositories/SurveyRepository'
 import { SurveysUsersRepository } from '../repositories/SurveysUsersRepository'
 import { UserRepository } from '../repositories/UserRepository'
 import SendEmailService from '../services/SendEmail.service'
+import { CustomHTTPError } from '../Utils'
 
 /**
  * @todo:
@@ -18,27 +19,19 @@ class SendMailController {
     const surveysRepository = getCustomRepository(SurveyRepository)
     const surveysUsersRepository = getCustomRepository(SurveysUsersRepository)
 
-    /** @BusinessLogic **/
+    /** @BusinessLogic_ErrorResponse **/
     const user = await usersRepository.findOne({ email })
     if (!user) {
-      return _response
-        .status(400)
-        .json({
-          error: 'Users does not exists'
-        })
+      throw new CustomHTTPError('Users does not exists')
     }
 
-    /** @BusinessLogic **/
+    /** @BusinessLogic_ErrorResponse **/
     const survey = await surveysRepository.findOne({ id: survey_id })
     if (!survey) {
-      return _response
-        .status(400)
-        .json({
-          error: 'Survey does not exists'
-        })
+      throw new CustomHTTPError('Survey does not exists')
     }
 
-    /** @BusinessLogic **/
+    /** @BusinessLogic_Response **/
     const templatePath = resolve(__dirname, '..', 'views', 'emails', 'firstTemplate.hbs')
     const variables = {
       name: user.name,
@@ -48,7 +41,7 @@ class SendMailController {
       link: `${process.env.URL_MAIL}`
     }
 
-    /** @BusinessLogic **/
+    /** @BusinessLogic_Response **/
     const surveyUserAlreadyExists = await surveysUsersRepository.findOne({
       where: { user_id: user.id, value: null },
       relations: ['user', 'survey']
@@ -61,7 +54,7 @@ class SendMailController {
         .json(surveyUserAlreadyExists)
     }
 
-    /** @BusinessLogic **/
+    /** @BusinessLogic_Response **/
     /* Store data into surveyUser table */
     const surveyUser = surveysUsersRepository.create({
       user_id: user.id,
@@ -69,7 +62,7 @@ class SendMailController {
     })
     await surveysUsersRepository.save(surveyUser)
 
-    /** @BusinessLogic **/
+    /** @BusinessLogic_Response **/
     /* Send email to user */
     variables.id = surveyUser.id
     await SendEmailService.execute(email, survey.title, variables, templatePath)

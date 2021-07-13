@@ -2,6 +2,7 @@ import { request, Request, response, Response } from 'express'
 import { getCustomRepository } from 'typeorm'
 import { UserRepository } from '../repositories/UserRepository'
 import * as yup from 'yup'
+import { CustomHTTPError } from '../Utils'
 
 class UserController {
 
@@ -16,9 +17,7 @@ class UserController {
     try {
       await userSchema.validate(_request.body, { abortEarly: false })
     } catch (error) {
-      return _response
-        .status(400)
-        .json({ error })
+      throw new CustomHTTPError(error)
     }
 
     const userRepository = getCustomRepository(UserRepository)
@@ -27,11 +26,7 @@ class UserController {
     /* SELECT * FROM USERS WHERE EMAIL = "EMAIL" */
     const userAlreadyExists = await userRepository.findOne({ email })
     if (userAlreadyExists) {
-      return _response
-        .status(400)
-        .json({
-          error: 'User already exist!'
-        })
+      throw new CustomHTTPError('User already exist!')
     }
 
     /** @BusinessLogic_Response **/
