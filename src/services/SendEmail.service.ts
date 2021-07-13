@@ -1,11 +1,12 @@
 import nodemailer, { Transporter } from 'nodemailer'
-import { resolve } from 'path'
-import fs from 'fs'
 import handlebars from 'handlebars'
+import fs from 'fs'
 
 class SendMailService {
   private client: Transporter
+  private sender: string
 
+  // Constructor is initialized when a class is called. Cant not be use async/await
   constructor() {
     nodemailer.createTestAccount()
       .then(account => {
@@ -19,34 +20,33 @@ class SendMailService {
           }
         })
         this.client = transporter
+        this.sender = 'NPS <anderson@t4inha.hek>'
       })
-
   }
 
-  async execute(to: string, subject: string, htmlRawBody: string) {
-    const templatePath = resolve(__dirname, '..', 'views', 'emails', 'firstTemplate.hbs')
-    const templateFileContent = fs.readFileSync(templatePath).toString('utf-8')
-    const mailTemplateParser = handlebars.compile(templateFileContent)
-    const mailHtmlBody = mailTemplateParser({
-      name: to,
-      title: subject,
-      description: htmlRawBody
-    })
+  async execute(
+    to: string,
+    subject: string,
+    variables: object,
+    path: string
+  ) {
+
+    const templateFileContent = fs.readFileSync(path).toString('utf8')
+
+    const mailTemplateParse = handlebars.compile(templateFileContent)
+
+    const html = mailTemplateParse(variables)
 
     const msg = await this.client.sendMail({
       to,
       subject,
-      html: mailHtmlBody,
-      from: 'Anderson Bosa <noreply@t4inha.hek>'
+      html: html,
+      from: this.sender
     })
 
     console.log('Message sent: %s', msg.messageId)
-    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(msg));
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(msg))
   }
 }
 
-/**
- * @observation
- * Exports the already instantiated service at the time the application is created.
- **/
 export default new SendMailService()
