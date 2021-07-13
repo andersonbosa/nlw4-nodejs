@@ -22,13 +22,17 @@ class UserController {
     const userBeingCreated = userRepository.create({ name, email })
     await userRepository.save(userBeingCreated)
 
-    return _response.send(userBeingCreated)
+    return _response
+      .status(201)
+      .json(userBeingCreated)
   }
 
   async getAll(_request: Request, _response: Response) {
     const userRepository = getCustomRepository(UserRepository)
     const allUsers = await userRepository.find()
-    return _response.json(allUsers)
+    return _response
+      .status(200)
+      .json(allUsers)
   }
 }
 

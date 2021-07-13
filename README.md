@@ -37,14 +37,20 @@
     - [x] controller
     - [x] model
     - [x] repository
-  - [ ] start automated tests
-    - [ ] unitary tests (common in TDD)
-    - [ ] integration tests (routes -> controller -> repository <> repository <- controller <- response)
-    - E2E, end2end tests
-    - `yarn add -D jest @types/jest`
-      - `yarn --init`
-      - `yarn add -D ts-jest`
-      - `yarn add -D supertest @types/supertest`
+  - [x] start automated tests
+    - types of test
+      - unitary tests (common in TDD)
+      - integration tests (routes -> controller -> repository <> repository <- controller <- response)
+      - E2E, end2end tests
+    - [x] setuping our tests
+      - `yarn add -D jest @types/jest`
+        - `yarn --init`
+        - `yarn add -D ts-jest`
+        - `yarn add -D supertest @types/supertest`
+        - create database to Tests
+      - [x] create User tests
+        - fix jest problem to import modules: `preset: "ts-jest"` in `jest.config.ts`
+      - [x] create Survey tests
 
 
 <!-- links -->

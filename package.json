@@ -2,11 +2,13 @@
   "name": "nlw4-nodejs-api",
   "version": "1.0.0",
   "private": true,
-  "main": "src/server.ts",
   "scripts": {
+    "reinstall": "rm -rf yarn.lock node_modules && yarn",
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
-    "test": "jest"
+    "test:watch": "NODE_ENV=test jest --watch",
+    "test": "NODE_ENV=test jest",
+    "posttest": "rm -v ./src/database/database.test.sqlite"
   },
   "dependencies": {
     "express": "^4.17.1",
