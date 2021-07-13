@@ -1,19 +1,24 @@
+import 'reflect-metadata'
 import express from 'express'
+import './database'
+import { router } from './routes'
 
-/* @see {@link -} to express documentation */
-const app = express()
 
-app.get('/', (_req, res) => {
-  return res.json({
-    msg: 'nlw4'
-  })
+/** @see {@link -} to express documentation */
+const App = express()
+
+
+/** @description Allows JSON in API. */
+App.use(express.json())
+
+
+/** @see Middlewares */
+App.use(router)
+
+const PORT = 7070
+App.listen(PORT, () => {
+  return console.log(`
+  \r> Server is running!
+  \rPort: http://localhost:${PORT}
+  \r`)
 })
-
-app.post('/', (req, res) => {
-  return res.json({
-    payload: req.data
-  })
-})
-
-app.listen(15000, () => console.log('# Server is running'))
-
