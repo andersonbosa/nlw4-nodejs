@@ -60,11 +60,14 @@
     - [x] `yarn add nodemailer; yarn add -D @types/nodemailer` 
     - [x] send email
     - `yarn add handlebars` to send templates
-  - [ ] create test
+  - [x] create test
 
 - [x] **class 5: finishing**
-  - [ ] validations
-    - [ ] `yarn add yup`
+  - [x] validations
+    - [x] `yarn add yup`
+  - [x] create utils
+    - [x] custom error
+    - [x] setup errors on express middleware: `yarn add express-async-errors`
 
 
 <!-- links -->

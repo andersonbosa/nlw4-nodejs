@@ -1,7 +1,9 @@
-import 'reflect-metadata'
 import express from 'express'
+import 'express-async-errors'
+import 'reflect-metadata'
 import createConnection from './database'
 import { router } from './routes'
+import { ErrorHandler } from './Utils'
 
 /** @description Create connection with Database **/
 createConnection()
@@ -15,8 +17,9 @@ const App = express()
 App.use(express.json())
 
 
-/** @see Middlewares */
+/** @see Middlewares in documentation */
 App.use(router)
+App.use(ErrorHandler)
 
 
 export { App }
