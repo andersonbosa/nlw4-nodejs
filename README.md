@@ -1,8 +1,39 @@
-# api
+# NLW4 Nodejs
 
-### Classes roadmap
+[![](https://img.shields.io/badge/course%20offered%20by-RocketSeat-purple)][rocketseat]
+![](https://img.shields.io/badge/npm%20client-YARN-cyan)
+[![](https://img.shields.io/badge/contributions-WELCOME-brightgreen.svg?style=flat)](https://github.com/andersonbosa/mykro/issues)
 
-#### API
+### Objective
+
+> A project create during the [Next Level Week 4][nlw4].
+> The project witch send emails to users and calculate the nps
+
+### Main Dependencies
+
+- Node.js >=14.x
+- Typescript
+- Typeorm
+### Getting Start
+
+```bash
+# install deps.
+yarn
+
+# start the server🚀
+yarn dev
+```
+
+
+### Diagrams/Helper
+
+- file:/[Drawio](./database.drawio)
+- file:/[Insomnia](./api.insomnia.json)
+
+<!------------------------------------------------------
+
+<details>
+  <summary><strong> Classes roadmap </strong></summary>
 
 - [x] **class 1: init project**
   - [x] `yarn init`
@@ -69,6 +100,12 @@
     - [x] custom error
     - [x] setup errors on express middleware: `yarn add express-async-errors`
 
+</details>
+------------------------------------------------------>
+
+
 
 <!-- links -->
 [typeorm]: https://typeorm.io
+[rocketseat]: https://rocketseat.com.br/
+[nlw4]: https://www.youtube.com/results?search_query=NLW4
