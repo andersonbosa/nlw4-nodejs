@@ -4,18 +4,16 @@
 
 #### API
 
-- [x] class 1
-  - [x] init project 
-    - [x] `yarn init`
-    - [x] `yarn add express`
-    - [x] `yarn add -D typescript @types/express`
-      - [x] `yarn tsc --init`
-        - [x] tsconfig `strict` => false
-    - [x] `yarn add -D ts-node-dev`
+- [x] **class 1: init project**
+  - [x] `yarn init`
+  - [x] `yarn add express`
+  - [x] `yarn add -D typescript @types/express`
+    - [x] `yarn tsc --init`
+      - [x] tsconfig `strict` => false
+  - [x] `yarn add -D ts-node-dev`
   - [x] create first routes
 
-- [x] class 2
-  - [x] setup dev. database
+- [x] **class 2: setup database**
     - [x] `yarn add typeorm reflect-metadata sqlite3`
     - [x] setup TypeORM
     - [x] create User Migration
@@ -30,6 +28,10 @@
     - [x] update `tsconfig.json` with **decorators**
     - [x] update `ormconfig.json` with **Entities**
     - [x] create drawio 
+
+- [ ] **class 3: init tests**
+  - [ ] refactor
+  - [ ] create Survey controller
 
 
 <!-- links -->

@@ -1,7 +1,6 @@
 {
   "name": "nlw4-nodejs-api",
   "version": "1.0.0",
-  "license": "MIT",
   "private": true,
   "main": "src/server.ts",
   "scripts": {
