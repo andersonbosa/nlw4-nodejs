@@ -44,6 +44,7 @@
     - `yarn add -D jest @types/jest`
       - `yarn --init`
       - `yarn add -D ts-jest`
+      - `yarn add -D supertest @types/supertest`
 
 
 <!-- links -->
