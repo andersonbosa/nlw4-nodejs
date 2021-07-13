@@ -1,0 +1,73 @@
+<style>
+  #body-msg {
+    width: 800px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .answers {
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .value {
+    padding: 10px;
+    width: 15px;
+    background: #9936c0;
+    color: white;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .level {
+    display: flex;
+    margin: 10px;
+    width: 350px;
+    justify-content: space-between;
+  }
+</style>
+
+<div id="body-msg">
+  <section>
+    <label for="">Hi <strong>{{name}}</strong>! How are you?</label>
+    <h3>{{title}}</h3>
+
+    <br />
+
+    <strong>{{description}}</strong>
+  </section>
+
+  <section>
+    <div class="level">
+      <span>Unlikely</span> <span>Very likely</span>
+    </div>
+  </section>
+
+  <section>
+    <div id="answers">
+      <a class="value" href="">1</a>
+      <a class="value" href="">2</a>
+      <a class="value" href="">3</a>
+      <a class="value" href="">4</a>
+      <a class="value" href="">5</a>
+      <a class="value" href="">6</a>
+      <a class="value" href="">7</a>
+      <a class="value" href="">8</a>
+      <a class="value" href="">9</a>
+      <a class="value" href="">10</a>
+    </div>
+  </section>
+
+  <br />
+  <br />
+
+  <section>
+    <strong>Your opinion is very important to us.</strong>
+    <h4>@t4inha team | Hek </h4>
+  </section>
+</div>

@@ -12,7 +12,6 @@ class SurveysController {
       description
     })
     await surveysRepository.save(survey)
-
     return _response
       .status(201)
       .json(survey)

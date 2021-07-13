@@ -52,6 +52,16 @@
         - fix jest problem to import modules: `preset: "ts-jest"` in `jest.config.ts`
       - [x] create Survey tests
 
+- [x] **class 4: send emails**
+  - [x] create SurveysUsers **migration**, it's **repository**, **controller** and **model**
+    - migration -> model -> repository -> controller
+  - [x] create email service
+    - ethereal
+    - [x] `yarn add nodemailer; yarn add -D @types/nodemailer` 
+    - [x] send email
+    - `yarn add handlebars` to send templates
+  - [ ] create test
+
 
 <!-- links -->
 [typeorm]: https://typeorm.io

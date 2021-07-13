@@ -20,6 +20,7 @@ class UserController {
     }
 
     const userBeingCreated = userRepository.create({ name, email })
+
     await userRepository.save(userBeingCreated)
 
     return _response
