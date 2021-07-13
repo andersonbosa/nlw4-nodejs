@@ -1,6 +1,6 @@
 # NLW4 Nodejs
 
-[![](https://img.shields.io/badge/license%20by-Copyleft-inactive)][https://www.gnu.org/licenses/copyleft.en.html]
+[![](https://img.shields.io/badge/license%20by-Copyleft-inactive)](https://www.gnu.org/licenses/copyleft.en.html) 
 [![](https://img.shields.io/badge/course%20offered%20by-RocketSeat-purple)][rocketseat]
 [![](https://img.shields.io/badge/npm%20client-YARN-cyan)][https://yarnpkg.com/]
 [![](https://img.shields.io/badge/contributions-WELCOME-brightgreen.svg?style=flat)](https://github.com/andersonbosa/nlw4-nodejs/issues)
