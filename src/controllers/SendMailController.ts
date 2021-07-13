@@ -44,25 +44,18 @@ class SendMailController {
       name: user.name,
       title: survey.title,
       description: survey.description,
-      user_id: user.id,
+      id: '',
       link: `${process.env.URL_MAIL}`
     }
 
     /** @BusinessLogic **/
     const surveyUserAlreadyExists = await surveysUserRepository.findOne({
-      where: [{
-        user_id: user.id,
-        value: null
-      }],
-      relations: [ 'user', 'survey']
+      where: { user_id: user.id, value: null },
+      relations: ['user', 'survey']
     })
     if (surveyUserAlreadyExists) {
-      await SendEmailService.execute(
-        email,
-        survey.title,
-        variables,
-        templatePath
-      )
+      variables.id = surveyUserAlreadyExists.id
+      await SendEmailService.execute(email, survey.title, variables, templatePath)
       return _response
         .status(200)
         .json(surveyUserAlreadyExists)
@@ -78,12 +71,8 @@ class SendMailController {
 
     /** @BusinessLogic **/
     /* Send email to user */
-    await SendEmailService.execute(
-      email,
-      survey.title,
-      variables,
-      templatePath
-    )
+    variables.id = surveyUser.id
+    await SendEmailService.execute(email, survey.title, variables, templatePath)
     return _response
       .status(201)
       .json(surveyUser)
