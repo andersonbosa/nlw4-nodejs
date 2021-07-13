@@ -1,6 +1,6 @@
 import { App } from './app'
 
-const PORT = 7070
+const PORT = 3333
 App.listen(PORT, () => {
   return console.log(`
   \r> Server is running!

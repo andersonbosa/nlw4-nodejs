@@ -62,6 +62,10 @@
     - `yarn add handlebars` to send templates
   - [ ] create test
 
+- [x] **class 5: finishing**
+  - [ ] validations
+    - [ ] `yarn add yup`
+
 
 <!-- links -->
 [typeorm]: https://typeorm.io

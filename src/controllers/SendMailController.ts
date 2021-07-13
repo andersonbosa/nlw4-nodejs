@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { resolve } from 'path'
 import { getCustomRepository } from 'typeorm'
 import { SurveyRepository } from '../repositories/SurveyRepository'
-import { SurveyUserRepository } from '../repositories/SurveysUsersRepository'
+import { SurveysUsersRepository } from '../repositories/SurveysUsersRepository'
 import { UserRepository } from '../repositories/UserRepository'
 import SendEmailService from '../services/SendEmail.service'
 
@@ -16,7 +16,7 @@ class SendMailController {
 
     const usersRepository = getCustomRepository(UserRepository)
     const surveysRepository = getCustomRepository(SurveyRepository)
-    const surveysUserRepository = getCustomRepository(SurveyUserRepository)
+    const surveysUsersRepository = getCustomRepository(SurveysUsersRepository)
 
     /** @BusinessLogic **/
     const user = await usersRepository.findOne({ email })
@@ -49,7 +49,7 @@ class SendMailController {
     }
 
     /** @BusinessLogic **/
-    const surveyUserAlreadyExists = await surveysUserRepository.findOne({
+    const surveyUserAlreadyExists = await surveysUsersRepository.findOne({
       where: { user_id: user.id, value: null },
       relations: ['user', 'survey']
     })
@@ -63,11 +63,11 @@ class SendMailController {
 
     /** @BusinessLogic **/
     /* Store data into surveyUser table */
-    const surveyUser = surveysUserRepository.create({
+    const surveyUser = surveysUsersRepository.create({
       user_id: user.id,
       survey_id
     })
-    await surveysUserRepository.save(surveyUser)
+    await surveysUsersRepository.save(surveyUser)
 
     /** @BusinessLogic **/
     /* Send email to user */
