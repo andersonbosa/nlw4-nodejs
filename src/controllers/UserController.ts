@@ -3,6 +3,7 @@ import { getCustomRepository } from 'typeorm'
 import { UserRepository } from '../repositories/UserRepository'
 
 class UserController {
+
   async create(_request: Request, _response: Response) {
     const { name, email } = _request.body
 
@@ -22,6 +23,12 @@ class UserController {
     await userRepository.save(userBeingCreated)
 
     return _response.send(userBeingCreated)
+  }
+
+  async getAll(_request: Request, _response: Response) {
+    const userRepository = getCustomRepository(UserRepository)
+    const allUsers = await userRepository.find()
+    return _response.json(allUsers)
   }
 }
 

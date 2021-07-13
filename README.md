@@ -29,9 +29,14 @@
     - [x] update `ormconfig.json` with **Entities**
     - [x] create drawio 
 
-- [ ] **class 3: init tests**
-  - [ ] refactor
-  - [ ] create Survey controller
+- [x] **class 3: init tests**
+  - [x] refactor
+  - [x] update `tsconfig.json` to `"strictPropertyInitialization": false` 
+  - [x] create Survey
+    - [x] migration
+    - [x] controller
+    - [x] model
+    - [x] repository
 
 
 <!-- links -->

@@ -1,20 +1,13 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-const UserTableName = 'users'
+const SurveyTableName = 'surveys'
 
-export class CreateUsers1626129473997 implements MigrationInterface {
+export class CreateSurveys1626137503103 implements MigrationInterface {
 
-    /**
-     * create Table migration
-     *
-     * @param {QueryRunner} queryRunner
-     * @return {*}  {Promise<void>}
-     * @memberof CreateUsers1626129473997
-     */
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: UserTableName,
+                name: SurveyTableName,
                 columns: [
                     {
                         name: 'id',
@@ -22,35 +15,29 @@ export class CreateUsers1626129473997 implements MigrationInterface {
                         isPrimary: true
                     },
                     {
-                        name: 'name',
+                        name: 'title',
                         type: 'varchar',
                         isNullable: false
                     },
+
                     {
-                        name: 'email',
+                        name: 'description',
                         type: 'varchar',
                         isNullable: false
                     },
                     {
                         name: 'created_at',
-                        type: 'date',
+                        type: 'timestamp',
+                        default: 'now()',
                         isNullable: false,
-                        default: 'now()'
                     },
                 ]
             })
         )
     }
 
-    /**
-     * remove table
-     *
-     * @param {QueryRunner} queryRunner
-     * @return {*}  {Promise<void>}
-     * @memberof CreateUsers1626129473997
-     */
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable(UserTableName)
+        await queryRunner.dropTable(SurveyTableName)
     }
 
 }

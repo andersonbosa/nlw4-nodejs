@@ -2,18 +2,18 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm'
 import { v4 as uuidV4 } from 'uuid'
 
 
-/* table name in migrations/...CreateUsers.ts */
-@Entity('users')
-class User {
+/* SurveyTableName in migrations/...CreateSurveys.ts */
+@Entity('surveys')
+class Survey {
 
   @PrimaryColumn()
   readonly id: string
 
   @Column(/* define `name` implict */)
-  name: string
+  title: string
 
   @Column()
-  email: string
+  description: string
 
   @CreateDateColumn()
   created_at: Date
@@ -25,5 +25,5 @@ class User {
   }
 }
 
-export { User }
+export { Survey }
 
