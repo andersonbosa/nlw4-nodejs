@@ -8,7 +8,7 @@
 ### Objective
 
 > A project create during the [Next Level Week 4][nlw4].
-> The project witch send emails to users and calculate the [NPS](https://www.hotjar.com/net-promoter-score/)
+> A study project to send emails to users and calculate the [NPS](https://www.hotjar.com/net-promoter-score/)
 
 ### Main Dependencies
 
